@@ -3,26 +3,28 @@ include <MCAD/constants.scad>;
 rm_height = 20;
 rm_diameter = 6;
 
-pin_position =  [ [ -0.25 * mm_per_inch, -0.25 * mm_per_inch, 0] ,
-                  [ -0.25 * mm_per_inch, 0.25 * mm_per_inch, 0] ,
-                  [ -0.15 * mm_per_inch, 0.25 * mm_per_inch, 0] ,
-                  [ -0.25 * mm_per_inch, 0.15 * mm_per_inch, 0] ,
-                  [ 0.25 * mm_per_inch, -0.25 * mm_per_inch, 0] ,
-                  [ 0.15 * mm_per_inch, -0.25 * mm_per_inch, 0] ,
-                  [ 0.25 * mm_per_inch, -0.15 * mm_per_inch, 0] ,
-                  [ 0.25 * mm_per_inch, 0.25 * mm_per_inch, 0] ];
-
 base_height = 20;
 base_diameter = 25;
 base_radius = base_diameter/2;
 
-hole_diameter = 1;
+hole_diameter = 2;
 hole_radius = (hole_diameter/2);
+hole_depth = 10;
+
+pin_position =  [ [ -0.25 * mm_per_inch, -0.25 * mm_per_inch, base_height - hole_depth] ,
+                  [ -0.25 * mm_per_inch, 0.25 * mm_per_inch, base_height - hole_depth] ,
+                  [ -0.15 * mm_per_inch, 0.25 * mm_per_inch, base_height - hole_depth] ,
+                  [ -0.25 * mm_per_inch, 0.15 * mm_per_inch, base_height - hole_depth] ,
+                  [ 0.25 * mm_per_inch, -0.25 * mm_per_inch, base_height - hole_depth] ,
+                  [ 0.15 * mm_per_inch, -0.25 * mm_per_inch, base_height - hole_depth] ,
+                  [ 0.25 * mm_per_inch, -0.15 * mm_per_inch, base_height - hole_depth] ,
+                  [ 0.25 * mm_per_inch, 0.25 * mm_per_inch, base_height - hole_depth] ];
+
 
 belt_radius = 1;
 
 
-magnet_radius = 1.2;
+magnet_radius = 1.5;
 magnet_depth = 1;
 
 $fn=50;
@@ -47,7 +49,7 @@ union() {
            //magnets
            for( i = [1:4] ) {
                 rotate([0,0,90*i]) translate([base_radius-magnet_depth,0,base_height/2]) {
-                    rotate([0,90,0]) cylinder(h=magnet_radius,r=magnet_depth);
+                    rotate([0,90,0]) cylinder(h=magnet_depth,r=magnet_radius);
                 }
             }
 
