@@ -1,11 +1,11 @@
 $fn = 200;
 
 pipe_diameter = 50;
-holder_length = 50;
-holder_height = 5;
+holder_length = 70;
+holder_height = 4;
 
 nut_diameter = 16.5;
-nut_hole_height = 3;
+nut_hole_height = 4;
 
 pb_hole_diameter = 12;
 top_oring_diameter = 14;
