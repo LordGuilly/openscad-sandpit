@@ -1,8 +1,7 @@
-$fn = 100;
+$fn = 200;
 
 pipe_diameter = 50;
-holder_length = 
-30;
+holder_length = 50;
 holder_height = 5;
 
 nut_diameter = 16.5;
