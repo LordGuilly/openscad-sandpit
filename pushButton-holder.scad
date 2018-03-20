@@ -4,6 +4,7 @@ pipe_diameter = 50;
 holder_length = 70;
 holder_height = 4;
 
+nut_offset = holder_length/2;
 nut_diameter = 16.5;
 nut_hole_height = 4;
 
@@ -20,7 +21,7 @@ translate([0,0,-(curve_radius-holder_height)]) difference() {
     translate([0,-curve_radius,-curve_radius]) cube( size = [holder_length, pipe_diameter, pipe_diameter-holder_height]);
 }
 
-translate([holder_length/2,0,0]) {
+translate([nut_offset,0,0]) {
     //nut holder
     rotate([0,0,30]) cylinder( r=nut_diameter/2, h = nut_hole_height, $fn=6);
     //main hole
