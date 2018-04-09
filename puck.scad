@@ -1,11 +1,16 @@
 
 $fn = 100;
 
+use <triad.scad>;
+
 puck_diameter = 81;
 puck_height = 34;
 puck_central_height = 28;
 puck_bevel = 2;
 wall_thick = 2;
+
+
+
 
 
 difference()
@@ -14,6 +19,7 @@ difference()
     puck_lead_core(0.2);
     translate([0,0,1])cylinder(r=100,h=100);
     translate([0,0,-1])cylinder(r=10,h=100);
+    translate([0,0,-puck_height/2])circle_triad( circle_radius = 20, hexagons_radius = 10, depth = 1);
 }
 
 /*

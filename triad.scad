@@ -1,23 +1,32 @@
 $fn = 50;
 
-offset_factor = 1.3;
 
+central_radius = 20;
+circle_triad( circle_radius = central_radius, hexagons_radius = 10);
 
-
-circle_triad();
-
-//triad();
-
-module circle_triad(circle_radius = 50) {
-for ( i = [ 30,90, 150, 210, 270,330 ] )
-    translate( [circle_radius*cos(i), circle_radius*sin(i),0] ) rotate(i-30) triad(arc_radius=circle_radius);
+module ring(r1, r2, h) {
+    difference() {
+        cylinder(r = r1, h = h);
+        translate([ 0, 0, -1 ]) cylinder(r = r2, h = h+2);
+    }
 }
-module triad( hex_radius = 20, arc_radius = 40, depth = 2){
+
+
+module circle_triad(circle_radius = 30, hexagons_radius = 20, depth = 2) {
+for ( i = [ 30,90, 150, 210, 270,330 ] )
+    rotate(i) translate( [circle_radius,0,0] ) rotate(-30)
+        triad(arc_radius=circle_radius, hex_radius = hexagons_radius, depth = depth);
+}
+module triad( hex_radius = 20, arc_radius = 40, depth = 2, internal_distance = 0.75, internal_width = 1.5){
     triad_shift = [90,210,330];
     difference() {
         cylinder( r = hex_radius, h = depth, $fn = 6);
         for (i = triad_shift) {
-            translate([offset_factor*arc_radius*cos(i), offset_factor*arc_radius*sin(i),0]) cylinder(r = arc_radius, h = depth);
+            rotate(i) {
+                translate([ 0.5*hex_radius +arc_radius ,0,0])cylinder(r = arc_radius, h = depth);
+                translate([ 0.5*hex_radius +arc_radius ,0]) ring(r1 = arc_radius + internal_width,r2 = arc_radius + internal_distance, h = depth);
+            }
+            
         }
     }
 }
