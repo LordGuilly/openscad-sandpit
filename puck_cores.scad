@@ -1,3 +1,4 @@
+puck_lead_core();
 //lead core, 1 piece
 module puck_lead_core( offset_tolerance = 0 ) {
 
