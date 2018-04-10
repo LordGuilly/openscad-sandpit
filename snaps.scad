@@ -1,10 +1,24 @@
 use <ring.scad>;
 
-snap_width = 5;
-snap_base = 50;
-snap_height_unit = 5;
+snap_ring(80,40,2);
 
-cylinder( r1 =snap_base, r2 = snap_base+snap_width, h = snap_height_unit);
-translate( [0,0,snap_height_unit] )cylinder( r1 =snap_base+snap_width, r2 = snap_base, h = 3*snap_height_unit);
+module snap_tab( base, width, height){
+    difference() {
+        union() {
+            cylinder( r1 =base, r2 = base+width, h = height);
+            translate( [0,0,height] )cylinder( r1 =base+width, r2 = base, h = 3*height);
+        }
+        cylinder( r =base, h = 5*height);
+    }
+}
 
-ring( snap_base, snap_base-5, h = 50 );
+module snap_ring( diameter, height, thick) {
+    snap_width = 5;
+    snap_base = diameter;
+    snap_height_unit = 5;
+    ring( diameter, diameter-thick, h = height, center = true );
+    translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
+
+    rotate([180,0,0]) translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
+}
+
