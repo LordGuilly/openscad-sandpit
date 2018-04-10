@@ -1,16 +1,9 @@
 $fn = 50;
 
+use <ring.scad>;
 
 central_radius = 20;
 circle_triad( circle_radius = central_radius, hexagons_radius = 10);
-
-module ring(r1, r2, h) {
-    difference() {
-        cylinder(r = r1, h = h);
-        translate([ 0, 0, -1 ]) cylinder(r = r2, h = h+2);
-    }
-}
-
 
 module circle_triad(circle_radius = 30, hexagons_radius = 20, depth = 2) {
 for ( i = [ 30,90, 150, 210, 270,330 ] )
