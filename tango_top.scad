@@ -1,7 +1,6 @@
 use <snaps.scad>;
-
+use <puck.scad>;
 //difference() 
 {
-    import( "tango_half.stl" );
-    snap_ring (37,20,1, $fn=100);
+    snap_ring (37,20,1, solid = true, $fn=100);
 }

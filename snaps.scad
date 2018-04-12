@@ -20,7 +20,7 @@ module snap_tab( base, width, height){
 module snap_ring( diameter, height, thick, solid = false) {
     snap_width = 1;
     snap_base = diameter;
-    snap_height_unit = 2;
+    snap_height_unit = 1;
     if (solid==false)
     {
         ring( diameter, diameter-thick, h = height, center = true );

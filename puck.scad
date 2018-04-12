@@ -3,6 +3,11 @@ $fn =100;
 
 use <triad.scad>;
 use <puck_cores.scad>;
+use <snaps.scad>;
+
+
+// Mk.001
+
 
 puck_diameter = 81;
 puck_height = 34;
@@ -10,10 +15,19 @@ puck_central_height = 28;
 puck_bevel = 2;
 wall_thick = 2;
 
-
-
-
-
+difference() {
+    union() {
+        difference()
+        {
+            puck_cover( diameter=puck_diameter, bevel=puck_bevel, h2=puck_height, h1 = puck_central_height);
+            translate([0,0,0])cylinder(r=puck_diameter,h=puck_height);
+        }
+        snap_ring(37,12,1, solid = true);
+    }
+    puck_lead_core(0);
+    translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
+}
+/*
 difference()
 {
     puck_cover( diameter=puck_diameter, bevel=puck_bevel, h2=puck_height, h1 = puck_central_height);
@@ -22,7 +36,7 @@ difference()
     translate([0,0,-1])cylinder(r=10,h=100);
     translate([0,0,-puck_height/2])circle_triad( circle_radius = 20, hexagons_radius = 10, depth = 0.5);
 }
-
+*/
 /*
 difference()
 {
