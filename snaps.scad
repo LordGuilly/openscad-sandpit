@@ -34,7 +34,7 @@ module snap_ring( radius, height, thick, solid = false, locks = false ) {
         rotate([180,0,0]) translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
         }
         if (locks==true) {
-            for (i = [0,120,240]) {
+            for (i = [60,180,300]) {
                 rotate(i) translate([radius,0,0]) cube( [3,2,height], center=true );
             }
         }
