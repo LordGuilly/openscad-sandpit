@@ -1,11 +1,7 @@
 use <ring.scad>;
 
-snap_ring(20,30,1,false);
-/*
-difference() {
-ring(23,19,25);
-snap_ring(20,30,1);
-}*/
+//cube( [2,2,30], center = true);
+snap_ring(20,30,1,solid=true, locks=true);
 
 module snap_tab( base, width, height){
     difference() {
@@ -17,20 +13,31 @@ module snap_tab( base, width, height){
     }
 }
 
-module snap_ring( diameter, height, thick, solid = false) {
-    snap_width = 1;
-    snap_base = diameter;
-    snap_height_unit = 1;
-    if (solid==false)
-    {
-        ring( diameter, diameter-thick, h = height, center = true );
-    }
-    else
-    {
-        cylinder( r= diameter, h = height, center = true);
-    }
-    translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
 
-    rotate([180,0,0]) translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
+module snap_ring( radius, height, thick, solid = false, locks = false ) {
+    snap_width = 1;
+    snap_base = radius;
+    snap_height_unit = 1;
+    
+    difference() {
+        union() {
+        if (solid==false)
+        {
+            ring( radius, radius-thick, h = height, center = true );
+        }
+        else
+        {
+            cylinder( r= radius, h = height, center = true);
+        }
+        translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
+
+        rotate([180,0,0]) translate( [0,0,height/2-4*snap_height_unit] ) snap_tab( snap_base, snap_width, snap_height_unit);
+        }
+        if (locks==true) {
+            for (i = [0,120,240]) {
+                rotate(i) translate([radius,0,0]) cube( [3,2,height], center=true );
+            }
+        }
+    }
 }
 
