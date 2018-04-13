@@ -1,5 +1,5 @@
 
-$fn =100;
+//$fn =100;
 
 use <triad.scad>;
 use <puck_cores.scad>;
@@ -28,16 +28,17 @@ difference() {
     puck_lead_core(0);
     translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
 }*/
-
+/* female
 difference() {
 
 
     puck_cover( diameter=puck_diameter, bevel=puck_bevel, h2=puck_height, h1 = puck_central_height);
-    snap_ring(37.2,12.2,6, solid = false);
-    translate([0,0,0])cylinder(r=puck_diameter,h=puck_height);
+    translate([0,0,2])snap_ring(37.2,12.2,6, solid = false);
+    translate([0,0,2])cylinder(r=puck_diameter,h=puck_height);
     puck_lead_core(0);
     translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
-}
+}*/
+
 /*
 difference()
 {
