@@ -35,7 +35,7 @@ module snap_ring( radius, height, thick, solid = false, locks = false ) {
         }
         if (locks==true) {
             for (i = [60,180,300]) {
-                rotate(i) translate([radius,0,0]) cube( [3,2,height], center=true );
+                rotate(i) translate([radius,0,0]) cube( [5,5,height], center=true );
             }
         }
     }
