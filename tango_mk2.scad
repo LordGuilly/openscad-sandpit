@@ -5,7 +5,7 @@ use <puck.scad>
 
 $fn = 100;
 
-male = false;
+male = true;
 
 // Mk.002
 puck_diameter = 81;
@@ -28,7 +28,7 @@ if(male)
             snap_ring(lead_core_max_diameter()/2,12,1, solid = true, locks = true);
         }
         puck_lead_core(core_tolerance,false);
-        translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
+        translate([0,0,-puck_height/2]) scale([1,1,0.7])import("stl_out/triad_ring.stl");
         translate([0,0,-parts_offset])cylinder(r=10,h=puck_height);
     }
 }
@@ -42,6 +42,6 @@ else
         translate([0,0,parts_offset])snap_ring(0.2+lead_core_max_diameter()/2,12.2,6, solid = false, locks=true);
         translate([0,0,parts_offset])cylinder(r=puck_diameter,h=puck_height);
         puck_lead_core(core_tolerance);
-        translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
+        translate([0,0,-puck_height/2]) scale([1,1,0.7])import("stl_out/triad_ring.stl");
     }
 }
