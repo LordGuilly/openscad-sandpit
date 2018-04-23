@@ -3,9 +3,9 @@ use <puck_cores.scad>;
 use <snaps.scad>;
 use <puck.scad>
 
-$fn = 20;
+$fn = 100;
 
-male = true;
+male = false;
 
 // Mk.002
 puck_diameter = 81;
@@ -14,7 +14,7 @@ puck_central_height = 28;
 puck_bevel = 2;
 wall_thick = 2;
 core_tolerance = 0;
-parts_offset = 2;
+parts_offset = 1;
 
 if(male)
 {
@@ -27,7 +27,7 @@ if(male)
             }
             snap_ring(lead_core_max_diameter()/2,12,1, solid = true, locks = true);
         }
-        puck_lead_core(core_tolerance);
+        puck_lead_core(core_tolerance,false);
         translate([0,0,-puck_height/2]) scale([1,1,0.5])import("stl_out/triad_ring.stl");
         translate([0,0,-parts_offset])cylinder(r=10,h=puck_height);
     }
