@@ -2,14 +2,14 @@ use <ring.scad>;
 
 //cube( [2,2,30], center = true);
 snap_ring(20,30,1,solid=true, locks=true);
-
-module snap_tab( base, width, height){
+//snap_tab(20,1,1,solid=true, locks=true);
+module snap_tab( base, width, height, thick = 1){
     difference() {
         union() {
             cylinder( r1 =base, r2 = base+width, h = height);
             translate( [0,0,height] )cylinder( r1 =base+width, r2 = base, h = 3*height);
         }
-        cylinder( r =base, h = 5*height);
+        cylinder( r =base-thick, h = 5*height);
     }
 }
 
