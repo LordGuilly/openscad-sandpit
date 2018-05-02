@@ -1,16 +1,28 @@
 
 puck_lead_core( bevel = false);
 
-/*
+
+core_measures = [ //max_diameter, middle_height, inner_diameter
+                    [ 74,   21.4,   63.6 ],  // SIMMS V1
+                    [ 72.3, 21.2,   64.4 ],  // SIMMS V2
+                   ];
+                    
+function LEAD_CORE_SIMMS_V1() = 0;
+function LEAD_CORE_SIMMS_V2() = 1;
+/*  
 //SIM V1
 function lead_core_max_diameter() = 74;
 function lead_core_middle_height() = 21.4;
 function lead_core_inner_diameter() = 63.6;;
-*/
+
 //SIM V2
 function lead_core_max_diameter() = 72.3;
 function lead_core_middle_height() = 21.2;
-function lead_core_inner_diameter() = 64.4;;
+function lead_core_inner_diameter() = 64.4;
+*/
+function lead_core_max_diameter(version = 1) = core_measures[version][0];
+function lead_core_middle_height(version = 1) =  core_measures[version][1];
+function lead_core_inner_diameter(version = 1) =  core_measures[version][2];
 
 //lead core, 1 piece
 module puck_lead_core( offset_tolerance = 0, bevel = true ) {

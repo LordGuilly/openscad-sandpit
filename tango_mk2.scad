@@ -19,6 +19,8 @@ parts_offset = 1;
 triads_depth = 0.7;
 core_bevel = false;
 
+core_version= LEAD_CORE_SIMMS_V2();
+
 if(male)
 {
     difference() {
