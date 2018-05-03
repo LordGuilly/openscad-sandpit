@@ -3,7 +3,7 @@ use <puck_cores.scad>;
 use <snaps.scad>;
 use <puck.scad>
 
-$fn = 20;
+$fn = 100;
 
 male = false;
 
@@ -49,5 +49,6 @@ else
         translate([0,0,parts_offset]) cylinder(r=puck_diameter,h=puck_height);
         rotate(60) puck_lead_core(core_tolerance,core_bevel);
         translate([0,0,-puck_height/2]) scale([1,1,triads_depth])import("stl_out/triad_ring.stl");
+        translate([0,0,-parts_offset])cylinder(r=10,h=puck_height);
     }
 }
