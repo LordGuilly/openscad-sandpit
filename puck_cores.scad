@@ -1,5 +1,5 @@
 
-puck_lead_core( bevel = false);
+puck_lead_core(bevel = false, core_version = 1);
 
 
 core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter
@@ -20,28 +20,28 @@ function lead_core_max_diameter() = 72.3;
 function lead_core_middle_height() = 21.2;
 function lead_core_inner_diameter() = 64.4;
 */
-function lead_core_max_diameter(version = 1) = core_measures[version][0];
-function lead_core_max_radius(version = 1) = core_measures[version][0]/2;
+function lead_core_max_diameter(version) = core_measures[version][0];
+function lead_core_max_radius(version) = core_measures[version][0]/2;
 
-function lead_core_middle_height(version = 1) =  core_measures[version][1];
+function lead_core_middle_height(version) =  core_measures[version][1];
 
-function lead_core_inner_diameter(version = 1) =  core_measures[version][2];
-function lead_core_inner_radius(version = 1) =  core_measures[version][2]/2;
+function lead_core_inner_diameter(version) =  core_measures[version][2];
+function lead_core_inner_radius(version) =  core_measures[version][2]/2;
 
-function lead_core_hole_diameter(version = 1) =  core_measures[version][3];
-function lead_core_hole_radius(version = 1) =  core_measures[version][3]/2;
+function lead_core_hole_diameter(version) =  core_measures[version][3];
+function lead_core_hole_radius(version) =  core_measures[version][3]/2;
 
 //lead core, 1 piece
-module puck_lead_core( offset_tolerance = 0, bevel = true ) {
+module puck_lead_core( offset_tolerance = 0, bevel = true, core_version = LEAD_CORE_SIMMS_V2()  ) {
 
     core_rounded_radius = 1;
-    core_outer_diameter = lead_core_max_diameter() - 2*core_rounded_radius + offset_tolerance;
-    core_inner_diameter = lead_core_inner_diameter() - 2*core_rounded_radius + offset_tolerance;
+    core_outer_diameter = lead_core_max_diameter( core_version ) - 2*core_rounded_radius + offset_tolerance;
+    core_inner_diameter = lead_core_inner_diameter( core_version ) - 2*core_rounded_radius + offset_tolerance;
     core_bevel_diameter = 50 - 2*core_rounded_radius + offset_tolerance;
     core_total_height   = 28.2 - 2*core_rounded_radius + offset_tolerance;
     core_beveled_height = 27 - 2*core_rounded_radius + offset_tolerance;
-    core_middle_height  = lead_core_middle_height() + offset_tolerance;
-    core_central_hole_diameter = lead_core_hole_diameter();
+    core_middle_height  = lead_core_middle_height( core_version ) + offset_tolerance;
+    core_central_hole_diameter = lead_core_hole_diameter( core_version );
     core_edge_locks_diameter = 1.5 + offset_tolerance;
 
     difference(){
