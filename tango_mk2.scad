@@ -26,16 +26,24 @@ if(male)
 {
     difference() {
         union() {
+            //keep the bottom half
             difference()
             {
                 puck_cover( diameter=puck_diameter, bevel=puck_bevel, h2=puck_height, h1 = puck_central_height);
-                translate([0,0,0])cylinder(r=puck_diameter,h=puck_height);
+                translate([0,0,0]) cylinder(r=puck_diameter,h=puck_height);
             }
-            snap_ring(lead_core_max_diameter()/2,12,1, solid = true, locks = true);
+            // add the snap ring, 12mm height
+            snap_ring(lead_core_max_diameter()/2, 12, 1, solid = true, locks = true);
         }
-        rotate(60)puck_lead_core(core_tolerance,core_bevel);
-        translate([0,0,-puck_height/2]) scale([1,1,triads_depth])import("stl_out/triad_ring.stl");
-        translate([0,0,-parts_offset])cylinder(r=10,h=puck_height);
+
+        // carve the puck lead core
+        rotate(60) puck_lead_core(core_tolerance,core_bevel);
+
+        // carve logo        
+        translate([0,0,-puck_height/2]) scale([1,1,triads_depth]) import("stl_out/triad_ring.stl");
+
+        // remove part of the middle cylinder
+        translate([0,0,-parts_offset]) cylinder(r=10,h=puck_height);
     }
 }
 else
