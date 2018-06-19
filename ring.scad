@@ -9,3 +9,16 @@ module ring(r1, r2, h, center = false) {
 }
 
 
+o_ring(inside_diameter=79,oring_width=3);
+
+module o_ring( inside_diameter, outside_diameter) {
+    color("red"){
+        rotate_extrude(){
+            translate([(inside_diameter+oring_width)/2, 0]){
+                circle(oring_width/2);
+            }
+        }
+    }    
+}
+
+

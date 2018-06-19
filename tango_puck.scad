@@ -1,7 +1,8 @@
 use <triad.scad>;
 use <puck_cores.scad>;
 use <snaps.scad>;
-use <puck.scad>
+use <puck.scad>;
+use <ring.scad>;
 
 $fn = 100;
 
@@ -15,14 +16,18 @@ puck_bevel = 2;
 wall_thick = 2;
 core_tolerance = 0.5;
 snap_ring_tolerance = 0.2;
-
-parts_offset = 1;
+o_ring_width_factor = 1.5;
+o_ring_width = 2.5;
+o_ring_offset = puck_central_height/4;
+parts_offset = 0;
 hole_offset = 3;
 
 triads_depth = 0.7;
 core_bevel = false;
 
-core_version= LEAD_CORE_SIMMS_V1();
+//o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
+
+core_version= LEAD_CORE_SIMMS_V2();
 if(male)
 {
     difference() {
@@ -45,6 +50,9 @@ if(male)
 
         // remove part of the middle cylinder
         translate([0,0,-hole_offset]) cylinder(r=10,h=puck_height);
+        //oring channels
+        o_ring(inside_diameter=puck_diameter-o_ring_width_factor*o_ring_width,oring_width=o_ring_width);
+        translate([0,0,-o_ring_offset]) o_ring(inside_diameter=puck_diameter-o_ring_width_factor*o_ring_width,oring_width=o_ring_width);
     }
 }
 else
@@ -59,5 +67,9 @@ else
         rotate(60) puck_lead_core(core_tolerance,core_bevel,core_version);
         translate([0,0,-puck_height/2]) scale([1,1,triads_depth])import("stl_out/triad_ring.stl");
         translate([0,0,-hole_offset]) cylinder(r=10,h=puck_height);
+        
+        //oring channels
+        o_ring(inside_diameter=puck_diameter-o_ring_width_factor*o_ring_width,oring_width=o_ring_width);
+        translate([0,0,-o_ring_offset]) o_ring(inside_diameter=puck_diameter-o_ring_width_factor*o_ring_width,oring_width=o_ring_width);
     }
 }
