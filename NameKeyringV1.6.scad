@@ -69,7 +69,7 @@ rotate([0,0,Rotation]) {
 
     linear_extrude(height = 3, $fn = 100) {
         translate ([-center-Loop_x_position,Loop_y_position,0]) rotate([0,0,-90]) 
-        text(size = 20, text = Loop_character, font = Loop_font, halign = "center", valign= "center", $fn = 100);
+        text(size = 10, text = Loop_character, font = Loop_font, halign = "center", valign= "center", $fn = 100);
     }
 
     for (i = [0 : len(Text) -1]) {
