@@ -4,7 +4,7 @@
 Font_name = "Chewy"; // [ Anton, Chewy, Forte, Gloria Hallelujah, Lobster, Luckiest Guy, Open Sans Extrabold, Oswald, Pacifico, Press Start 2P, Racing Sans One, Sigmar One, Snap ITC]
 
 // for your keyring
-Text = "Luna";
+Text = "Laurence";
 
 // of the preview
 Rotation = 50; // [0:5:360]
@@ -12,25 +12,25 @@ Rotation = 50; // [0:5:360]
 /* [Spacing and Height] */
 
 letter_1_height = 6; // [-20:1:20]
-letter_1_space = 11; // [-20:1:20]
+letter_1_space = 10; // [-20:1:20]
 
 letter_2_height = 5; // [-20:1:20]
-letter_2_space = 12; // [-20:1:20]
+letter_2_space = 11; // [-20:1:20]
 
 letter_3_height = 4; // [-20:1:20]
-letter_3_space = 12.5; // [-20:1:20]
+letter_3_space = 11.4; // [-20:1:20]
 
 letter_4_height = 6; // [-20:1:20]
-letter_4_space = 11.2; // [-20:1:20]
+letter_4_space = 11; // [-20:1:20]
 
 letter_5_height = 4; // [-20:1:20]
-letter_5_space = 6.5; // [-20:1:20]
+letter_5_space = 11.4; // [-20:1:20]
 
 letter_6_height = 5; // [-20:1:20]
-letter_6_space = 8; // [-20:1:20]
+letter_6_space = 11.5; // [-20:1:20]
 
-letter_7_height = 5; // [-20:1:20]
-letter_7_space = 9; // [-20:1:20]
+letter_7_height = 4; // [-20:1:20]
+letter_7_space = 11.5; // [-20:1:20]
 
 letter_8_height = 5; // [-20:1:20]
 letter_8_space = 11; // [-20:1:20]
@@ -46,13 +46,13 @@ center = 30; // [0:1:70]
 /* [ Loop Settings ] */
 
 // adjument
-Loop_x_position = 10.5; // [-150:1:50]
+Loop_x_position = 9; // [-150:1:50]
 
 // adjument
 Loop_y_position = -1; // [-20:1:20]
 
 // to use (default : u)
-Loop_character = "o";
+Loop_character = "u";
 
 // to use (default : Chewy)
 Loop_font = "Chewy"; // [ Anton, Chewy, Forte, Gloria Hallelujah, Lobster, Luckiest Guy, Open Sans Extrabold, Oswald, Pacifico, Press Start 2P, Racing Sans One, Sigmar One, Snap ITC]
