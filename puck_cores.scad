@@ -41,7 +41,7 @@ module puck_lead_core( offset_tolerance = 0, bevel = true, core_version = LEAD_C
     core_total_height   = 28.2 - 2*core_rounded_radius + offset_tolerance;
     core_beveled_height = 27 - 2*core_rounded_radius + offset_tolerance;
     core_middle_height  = lead_core_middle_height( core_version ) + offset_tolerance;
-    core_central_hole_diameter = lead_core_hole_diameter( core_version );
+    core_central_hole_diameter = lead_core_hole_diameter( core_version ) + offset_tolerance;
     core_edge_locks_diameter = 1.5 + offset_tolerance;
 
     difference(){
