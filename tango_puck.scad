@@ -8,7 +8,6 @@ $fn = 100;
 
 male = false;
 
-// Mk.002
 puck_diameter = 81;
 puck_height = 34;
 puck_central_height = 28;
@@ -21,13 +20,13 @@ o_ring_width = 2.5;
 o_ring_offset = puck_central_height/4;
 parts_offset = 0;
 hole_offset = 3;
-
+triads_scale = 1.1;
 triads_depth = 0.7;
 core_bevel = false;
 
 //o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
 
-core_version= LEAD_CORE_SIMMS_V2();
+core_version= LEAD_CORE_SIMMS_V1();
 if(male)
 {
     difference() {
@@ -46,7 +45,7 @@ if(male)
         rotate(60) puck_lead_core(core_tolerance,core_bevel, core_version);
 
         // carve logo        
-        translate([0,0,-puck_height/2]) scale([1,1,triads_depth]) import("stl_out/triad_ring.stl");
+        translate([0,0,-puck_height/2]) scale([triads_scale,triads_scale,triads_depth]) import("stl_out/triad_ring.stl");
 
         // remove part of the middle cylinder
         translate([0,0,-hole_offset]) cylinder(r=10,h=puck_height);
@@ -65,7 +64,7 @@ else
         // keep the bottom half
         translate([0,0,parts_offset]) cylinder(r=puck_diameter,h=puck_height);
         rotate(60) puck_lead_core(core_tolerance,core_bevel,core_version);
-        translate([0,0,-puck_height/2]) scale([1,1,triads_depth])import("stl_out/triad_ring.stl");
+        translate([0,0,-puck_height/2]) scale([triads_scale,triads_scale,triads_depth])import("stl_out/triad_ring.stl");
         translate([0,0,-hole_offset]) cylinder(r=10,h=puck_height);
         
         //oring channels
