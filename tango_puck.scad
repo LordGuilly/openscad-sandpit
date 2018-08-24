@@ -6,7 +6,7 @@ use <ring.scad>;
 
 $fn = 100;
 
-male = true;
+male = false;
 
 puck_diameter = 81;
 puck_height = 34;
@@ -14,6 +14,7 @@ puck_central_height = 28;
 puck_bevel = 2;
 wall_thick = 2;
 core_tolerance = 0.5;
+hole_tolerance = 0.3;
 snap_ring_tolerance = 0.8;
 o_ring_width_factor = 1.5;
 o_ring_width = 2.5;
@@ -42,7 +43,7 @@ if(male)
         }
 
         // carve the puck lead core
-        rotate(60) puck_lead_core(core_tolerance,core_bevel, core_version);
+        rotate(60) puck_lead_core( offset_tolerance = core_tolerance, hole_tolerance = hole_tolerance, bevel = core_bevel, core_version);
 
         // carve logo        
         translate([0,0,-puck_height/2]) scale([triads_scale,triads_scale,triads_depth]) import("stl_out/triad_ring.stl");
@@ -63,7 +64,7 @@ else
 
         // keep the bottom half
         translate([0,0,parts_offset]) cylinder(r=puck_diameter,h=puck_height);
-        rotate(60) puck_lead_core(core_tolerance,core_bevel,core_version);
+        rotate(60) puck_lead_core(offset_tolerance = core_tolerance, hole_tolerance =hole_tolerance, bevel = core_bevel,core_version);
         translate([0,0,-puck_height/2]) scale([triads_scale,triads_scale,triads_depth])import("stl_out/triad_ring.stl");
         translate([0,0,-hole_offset]) cylinder(r=10,h=puck_height);
         
