@@ -17,7 +17,7 @@ core_tolerance = 0.5;
 hole_tolerance = 0.3;
 snap_ring_tolerance = 0.8;
 o_ring_width_factor = 1.5;
-o_ring_width = 2.5;
+o_ring_width = 2;
 o_ring_offset = puck_central_height/4;
 parts_offset = 0;
 hole_offset = 3;
@@ -27,7 +27,7 @@ core_bevel = false;
 
 //o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
 
-core_version= LEAD_CORE_SIMMS_V2();
+core_version= LEAD_CORE_SIMMS_V1();
 if(male)
 {
     difference() {
