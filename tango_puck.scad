@@ -6,7 +6,7 @@ use <ring.scad>;
 
 $fn = 100;
 
-male = false;
+male = true;
 
 puck_diameter = 81;
 puck_height = 34;
@@ -27,7 +27,7 @@ core_bevel = false;
 
 //o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
 
-core_version= LEAD_CORE_SIMMS_V1();
+core_version= LEAD_CORE_SIMMS_V2();
 if(male)
 {
     difference() {
