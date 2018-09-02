@@ -1,7 +1,7 @@
 use <ring.scad>;
 
 //cube( [2,2,30], center = true);
-snap_ring(20,30,1,solid=true, locks=true);
+snap_ring(20,30,1,solid=false, locks=true);
 //snap_tab(20,1,1,solid=true, locks=true);
 module snap_tab( base, width, height, thick = 1){
     difference() {
@@ -35,7 +35,7 @@ module snap_ring( radius, height, thick, solid = false, locks = false ) {
         }
         if (locks==true) {
             for (i = [60,180,300]) {
-                rotate(i) translate([radius,0,0]) cube( [5,5,height], center=true );
+                rotate(i) translate([radius,0,0]) cube( [20,5,height+1], center=true );
             }
         }
     }

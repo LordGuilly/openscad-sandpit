@@ -1,5 +1,5 @@
 
-puck_lead_core(bevel = false, core_version = 1);
+puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V1());
 
 
 core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter
@@ -35,15 +35,15 @@ function lead_core_hole_radius(version) =  core_measures[version][3]/2;
 module puck_lead_core( offset_tolerance = 0, hole_tolerance = 0, bevel = true, core_version = LEAD_CORE_SIMMS_V2()  ) {
 
     core_rounded_radius = 1;
-    core_outer_diameter = lead_core_max_diameter( core_version ) - 2*core_rounded_radius + offset_tolerance;
-    core_inner_diameter = lead_core_inner_diameter( core_version ) - 2*core_rounded_radius + offset_tolerance;
-    core_bevel_diameter = 50 - 2*core_rounded_radius + offset_tolerance;
-    core_total_height   = 28.2 - 2*core_rounded_radius + offset_tolerance;
-    core_beveled_height = 27 - 2*core_rounded_radius + offset_tolerance;
-    core_middle_height  = lead_core_middle_height( core_version ) + offset_tolerance;
+    core_outer_diameter = lead_core_max_diameter( core_version ) - offset_tolerance;
+    core_inner_diameter = lead_core_inner_diameter( core_version ) - 2*core_rounded_radius - offset_tolerance;
+    core_bevel_diameter = 50 - 2*core_rounded_radius - offset_tolerance;
+    core_total_height   = 28.2 - 2*core_rounded_radius - offset_tolerance;
+    core_beveled_height = 27 - 2*core_rounded_radius - offset_tolerance;
+    core_middle_height  = lead_core_middle_height( core_version ) - offset_tolerance;
     // the hole and locks, need a negative offset, so the "hole" is generated bigger
-    core_central_hole_diameter = lead_core_hole_diameter( core_version ) - hole_tolerance;
-    core_edge_locks_diameter = 1.5 - hole_tolerance;
+    core_central_hole_diameter = lead_core_hole_diameter( core_version ) + hole_tolerance;
+    core_edge_locks_diameter = 1.5 + hole_tolerance;
 
     difference(){
         union(){    
@@ -60,7 +60,7 @@ module puck_lead_core( offset_tolerance = 0, hole_tolerance = 0, bevel = true, c
                 {
                     cylinder(r = core_inner_diameter/2, h = core_total_height, center =true);
                 }
-                sphere(r=2*core_rounded_radius);        
+                sphere(r=core_rounded_radius);        
             }
         }
         cylinder(r=core_central_hole_diameter/2, h = 2*core_total_height, center=true);

@@ -6,18 +6,18 @@ use <ring.scad>;
 
 $fn = 100;
 
-male = true;
+male = false;
 
 puck_diameter = 81;
 puck_height = 34;
 puck_central_height = 28;
 puck_bevel = 2;
 wall_thick = 2;
-core_tolerance = 0.5;
-hole_tolerance = 0.3;
-snap_ring_tolerance = 0.8;
+core_tolerance = 0;
+hole_tolerance = 0;
+snap_ring_tolerance = 0.5;
 o_ring_width_factor = 1.5;
-o_ring_width = 2;
+o_ring_width = 2.5;
 o_ring_offset = puck_central_height/4;
 parts_offset = 0;
 hole_offset = 3;
@@ -27,7 +27,8 @@ core_bevel = false;
 
 //o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
 
-core_version= LEAD_CORE_SIMMS_V2();
+core_version= LEAD_CORE_SIMMS_V1();
+
 if(male)
 {
     difference() {
@@ -73,3 +74,4 @@ else
         translate([0,0,-o_ring_offset]) o_ring(inside_diameter=puck_diameter-o_ring_width_factor*o_ring_width,oring_width=o_ring_width);
     }
 }
+
