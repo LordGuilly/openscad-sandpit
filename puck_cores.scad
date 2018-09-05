@@ -2,9 +2,10 @@
 puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V1());
 
 
-core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter
-                    [ 74,   21.4,   63.6 , 7.5],  // SIMMS V1
-                    [ 72.3, 21.2,   64.4 , 7.5],  // SIMMS V2
+core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter, total_height
+                    //[ 74,   21.4,   63.6 , 7.5, 28.2],  // SIMMS V1
+                    [ 74,   21.4,   63.6 , 7.5, 28.2],  // SIMMS V1
+                    [ 72.3, 21.2,   64.4 , 7.5, 28.2],  // SIMMS V2
                    ];
                     
 function LEAD_CORE_SIMMS_V1() = 0;
@@ -31,6 +32,8 @@ function lead_core_inner_radius(version) =  core_measures[version][2]/2;
 function lead_core_hole_diameter(version) =  core_measures[version][3];
 function lead_core_hole_radius(version) =  core_measures[version][3]/2;
 
+function lead_core_total_height(version) =  core_measures[version][4];
+
 //lead core, 1 piece
 module puck_lead_core( offset_tolerance = 0, hole_tolerance = 0, bevel = true, core_version = LEAD_CORE_SIMMS_V2()  ) {
 
@@ -38,7 +41,7 @@ module puck_lead_core( offset_tolerance = 0, hole_tolerance = 0, bevel = true, c
     core_outer_diameter = lead_core_max_diameter( core_version ) - offset_tolerance;
     core_inner_diameter = lead_core_inner_diameter( core_version ) - 2*core_rounded_radius - offset_tolerance;
     core_bevel_diameter = 50 - 2*core_rounded_radius - offset_tolerance;
-    core_total_height   = 28.2 - 2*core_rounded_radius - offset_tolerance;
+    core_total_height   = lead_core_total_height( core_version ) - 2*core_rounded_radius - offset_tolerance;
     core_beveled_height = 27 - 2*core_rounded_radius - offset_tolerance;
     core_middle_height  = lead_core_middle_height( core_version ) - offset_tolerance;
     // the hole and locks, need a negative offset, so the "hole" is generated bigger
