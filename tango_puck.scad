@@ -6,7 +6,7 @@ use <ring.scad>;
 
 $fn = 100;
 
-male = false;
+male = true;
 
 puck_diameter = 81;
 puck_height = 34;

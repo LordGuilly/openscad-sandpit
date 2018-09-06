@@ -1,9 +1,8 @@
-
-puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V1());
+$fn = 100;
+puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V2());
 
 
 core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter, total_height
-                    //[ 74,   21.4,   63.6 , 7.5, 28.2],  // SIMMS V1
                     [ 74,   21.4,   63.6 , 7.5, 28.2],  // SIMMS V1
                     [ 72.3, 21.2,   64.4 , 7.5, 28.2],  // SIMMS V2
                    ];
