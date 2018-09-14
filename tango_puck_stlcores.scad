@@ -30,8 +30,8 @@ triads_depth = 0.7;
 
 //o_ring(inside_diameter=puck_diameter-o_ring_width,oring_width=o_ring_width);
 
-core_version= LEAD_CORE_SIMMS_V1();
-core_file= "cores/simm_v1.stl";
+core_version= LEAD_CORE_SIMMS_V2();
+core_file= "cores/simm_v2.stl";
 
 if(male)
 {
