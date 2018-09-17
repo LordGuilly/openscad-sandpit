@@ -5,10 +5,12 @@ puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V2());
 core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter, total_height
                     [ 74,   21.4,   63.6 , 7.5, 28.2],  // SIMMS V1
                     [ 72.3, 21.2,   64.4 , 7.5, 28.2],  // SIMMS V2
+                    [ 72.2, 21.0,   65.0 , 7.5, 28.2],  // SIMMS V3
                    ];
                     
 function LEAD_CORE_SIMMS_V1() = 0;
 function LEAD_CORE_SIMMS_V2() = 1;
+function LEAD_CORE_SIMMS_V3() = 2;
 /*  
 //SIM V1
 function lead_core_max_diameter() = 74;
