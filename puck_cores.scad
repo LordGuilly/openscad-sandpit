@@ -1,5 +1,5 @@
 $fn = 100;
-puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V2());
+puck_lead_core(bevel = false, core_version = LEAD_CORE_SIMMS_V3());
 
 
 core_measures = [ //max_diameter, middle_height, inner_diameter, hole_diameter, total_height
